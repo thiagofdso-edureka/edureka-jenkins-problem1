@@ -45,11 +45,11 @@ pipeline {
 
     post {
         success {
-            // Add post-build actions if needed
+            echo "Build success"
         }
 
         failure {
-            // Add actions to be taken on build failure
+            echo "Build failed"
         }
     }
 }

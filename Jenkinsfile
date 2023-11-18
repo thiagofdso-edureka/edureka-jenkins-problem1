@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+            EMAILS = "thiagofdso.ufpa@gmail.com"
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -8,7 +12,6 @@ pipeline {
                 checkout scm
             }
         }
-
 
         stage('Test') {
             steps {
@@ -20,7 +23,8 @@ pipeline {
                 }
             }
         }
-	    stage('Parallel Package') {
+
+	    stage('Parallel Build') {
            parallel {
                 stage('Development') {
                     steps {
@@ -45,16 +49,15 @@ pipeline {
                 }
              }
         }
-
     }
 
-    post {
+    post {  
         success {
-            echo "Build success"
+                emailext body: '${TEMPLATE, file="managed:SuccessMail-Body"}', subject: '${TEMPLATE, file="managed:SuccessMail-Title"}', to: "${EMAILS}"
         }
-
-        failure {
-            echo "Build failed"
+            
+        unsuccessful {
+                emailext attachLog: true, body: '${TEMPLATE, file="managed:FailedMail-Body"}', subject: '${TEMPLATE, file="managed:FailedMail-Title"}', to: "${EMAILS} "
         }
     }
 }

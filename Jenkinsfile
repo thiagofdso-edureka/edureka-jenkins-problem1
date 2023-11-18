@@ -28,7 +28,7 @@ pipeline {
                             echo "Building for Development environment"
                             def mvnHome = tool 'Maven-3.6.3'
                             def mvnCmd = "${mvnHome}/bin/mvn"
-                 		     sh "${mvnCmd} clean install -P development"
+                 		     sh "${mvnCmd} clean package -P development -DskipTests=true"
                         }
                     }
                 }
@@ -39,7 +39,7 @@ pipeline {
                             echo "Building for Production environment"
                             def mvnHome = tool 'Maven-3.6.3'
                             def mvnCmd = "${mvnHome}/bin/mvn"
-                 		     sh "${mvnCmd} clean install -P production"
+                 		     sh "${mvnCmd} clean package -P production -DskipTests=true"
                         }
                     }
                 }

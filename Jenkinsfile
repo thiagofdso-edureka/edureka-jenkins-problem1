@@ -14,7 +14,7 @@ pipeline {
 
                 // Build the Maven project
                 script {
-                    def mvnHome = tool 'Maven-3.8.1'
+                    def mvnHome = tool 'Maven-3.6.3'
                     def mvnCmd = "${mvnHome}/bin/mvn"
                     sh "${mvnCmd} clean install"
                 }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 // Run tests using Maven
                 script {
-                    def mvnHome = tool 'Maven-3.8.1'
+                    def mvnHome = tool 'Maven-3.6.3'
                     def mvnCmd = "${mvnHome}/bin/mvn"
                     sh "${mvnCmd} test"
                 }

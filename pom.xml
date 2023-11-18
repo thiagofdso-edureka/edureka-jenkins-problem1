@@ -8,6 +8,22 @@
   <version>1.0.0</version>
   <name>maigolab_hello</name>
   <url>http://maven.apache.org</url>
+  
+  <profiles>
+    <profile>
+      <id>development</id>
+      <properties>
+        <version.suffix>SNAPSHOT</version.suffix>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>production</id>
+      <properties>
+        <version.suffix></version.suffix>
+      </properties>
+    </profile>
+  </profiles>
 
   <build>
     <plugins>

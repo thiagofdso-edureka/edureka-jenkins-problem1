@@ -9,17 +9,6 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-
-                // Build the Maven project
-                script {
-                    def mvnHome = tool 'Maven-3.6.3'
-                    def mvnCmd = "${mvnHome}/bin/mvn"
-                    sh "${mvnCmd} clean install"
-                }
-            }
-        }
 
         stage('Test') {
             steps {
@@ -30,6 +19,31 @@ pipeline {
                     sh "${mvnCmd} test"
                 }
             }
+        }
+	    stage('Parallel Package') {
+           parallel {
+                stage('Development') {
+                    steps {
+                        script {
+                            echo "Building for Development environment"
+                            def mvnHome = tool 'Maven-3.6.3'
+                            def mvnCmd = "${mvnHome}/bin/mvn"
+                 		     sh "${mvnCmd} clean install -P development"
+                        }
+                    }
+                }
+
+                stage('Production') {
+                    steps {
+                        script {
+                            echo "Building for Production environment"
+                            def mvnHome = tool 'Maven-3.6.3'
+                            def mvnCmd = "${mvnHome}/bin/mvn"
+                 		     sh "${mvnCmd} clean install -P production"
+                        }
+                    }
+                }
+             }
         }
 
     }

@@ -11,10 +11,6 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Set up Maven
-                tools {
-                    maven 'Maven-3.6.3' // Specify the Maven installation name
-                }
 
                 // Build the Maven project
                 script {

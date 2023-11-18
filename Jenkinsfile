@@ -53,10 +53,12 @@ pipeline {
 
     post {  
         success {
+                echo "Sending success mail"
                 emailext body: '${TEMPLATE, file="managed:SuccessMail-Body"}', subject: '${TEMPLATE, file="managed:SuccessMail-Title"}', to: "${EMAILS}"
         }
             
         unsuccessful {
+                echo "Sending failed mail"
                 emailext attachLog: true, body: '${TEMPLATE, file="managed:FailedMail-Body"}', subject: '${TEMPLATE, file="managed:FailedMail-Title"}', to: "${EMAILS} "
         }
     }

@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent ubuntu
 
     environment {
             EMAILS = "thiagofdso.ufpa@gmail.com"

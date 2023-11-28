@@ -58,16 +58,13 @@ pipeline {
         success {
                 echo "Sending success mail"
                 emailext body: '${TEMPLATE, file="managed:SuccessMail-Body"}', subject: '${TEMPLATE, file="managed:SuccessMail-Title"}', to: "${EMAILS}"
-		script{
-		  def mensagemSlack = "${PROJECT_NAME} - ${BUILD_NUMBER} Build Success - ${BUILD_URL}/console"
-		  slackSend color: "good", message: mensagemSlack
-		}
+		slackSend color: "good", message: "${env.PROJECT_NAME} - ${env.BUILD_NUMBER} Build Success - ${env.BUILD_URL}/console"
         }
             
         unsuccessful {
                 echo "Sending failed mail"
                 emailext attachLog: true, body: '${TEMPLATE, file="managed:FailedMail-Body"}', subject: '${TEMPLATE, file="managed:FailedMail-Title"}', to: "${EMAILS} "
-                slackSend color: "good", message: "${PROJECT_NAME} - ${BUILD_NUMBER} Build Failed - ${BUILD_URL}/console"
+                slackSend color: "danger", message: "${env.PROJECT_NAME} - ${env.BUILD_NUMBER} Build Failed - ${env.BUILD_URL}/console"
         }
     }
 }

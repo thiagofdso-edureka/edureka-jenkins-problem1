@@ -58,7 +58,8 @@ pipeline {
         success {
                 echo "Sending success mail"
                 emailext body: '${TEMPLATE, file="managed:SuccessMail-Body"}', subject: '${TEMPLATE, file="managed:SuccessMail-Title"}', to: "${EMAILS}"
-		slackSend color: "good", message: "${PROJECT_NAME} - ${BUILD_NUMBER} Build Success - ${BUILD_URL}/console"
+		def mensagemSlack = "${PROJECT_NAME} - ${BUILD_NUMBER} Build Success - ${BUILD_URL}/console"
+		slackSend color: "good", message: mensagemSlack
         }
             
         unsuccessful {

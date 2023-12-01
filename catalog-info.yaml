@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: edureka-jenkins-problem1
+  annotations:
+    github.com/project-slug: thiagofdso/edureka-jenkins-problem1
+spec:
+  type: other
+  lifecycle: unknown
+  owner: guests

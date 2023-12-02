@@ -4,7 +4,7 @@ metadata:
   name: edureka-jenkins-problem1
   annotations:
     github.com/project-slug: thiagofdso/edureka-jenkins-problem1
-    jenkins.io/job-full-name: "thiagofdso-edureka/edureka-jenkins-problem1/master"
+    jenkins.io/job-full-name: "thiagofdso-edureka/edureka-jenkins-problem1"
 spec:
   type: service
   lifecycle: development

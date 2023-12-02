@@ -6,6 +6,6 @@ metadata:
     github.com/project-slug: thiagofdso/edureka-jenkins-problem1
     jenkins.io/job-full-name: edureka-jenkins-problem1
 spec:
-  type: other
-  lifecycle: unknown
+  type: webapi
+  lifecycle: development
   owner: guests

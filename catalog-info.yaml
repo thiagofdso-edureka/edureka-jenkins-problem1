@@ -6,6 +6,6 @@ metadata:
     github.com/project-slug: thiagofdso/edureka-jenkins-problem1
     jenkins.io/job-full-name: "default:edureka-jenkins-problem1"
 spec:
-  type: webapi
+  type: service
   lifecycle: development
   owner: guests
